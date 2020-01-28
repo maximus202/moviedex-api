@@ -58,7 +58,7 @@ app.get('/movies', function handleGetMovies(req, res) {
 
 app.use((error, req, res, next) => {
     let response
-    if (process.env.NODE_END === !'production') {
+    if (process.env.NODE_END === 'production') {
         response = { error: { message: 'server error' } }
     } else {
         response = { error }
@@ -70,4 +70,6 @@ app.use((error, req, res, next) => {
 const PORT = process.env.PORT || 8000;
 
 //Listener
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log('Server listening')
+});
